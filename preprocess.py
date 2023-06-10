@@ -1,6 +1,6 @@
 from logging import getLogger, StreamHandler, Formatter, DEBUG
 from pathlib import Path
-from experimental_tools.preprocess.ner_mturk import NerMturkPreprocessor
+from label_selection_layer.preprocess.ner_mturk import NerMturkPreprocessor
 
 logger = getLogger(__name__)
 handler = StreamHandler()

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "experimental_tools"
+name = "label_selection_layer"
 version = "0.1.0"
 description = ""
 authors = ["ssatsuki <ssatsuki040508@gmail.com>"]
