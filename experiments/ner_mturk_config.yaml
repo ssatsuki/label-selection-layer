@@ -1,0 +1,22 @@
+max_epochs: 160
+batch_size: 64
+savedir: '.'
+model_type: 'LABEL_SELECTION'
+seed: 42
+early_stopping: true
+
+hydra:
+  job:
+    chdir: true
+
+basic_model:
+  label_type: 'gt'
+
+crowd_layer_model:
+  mode: 'MW'
+
+label_selection_model:
+  mode: 'simple'
+  c: 0.4
+  lmd: 32
+  should_pretrain: True

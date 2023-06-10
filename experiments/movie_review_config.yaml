@@ -1,0 +1,21 @@
+max_epochs: 100
+batch_size: 128
+num_embeddings: 20000
+savedir: '.'
+datadir: '/content/drive/MyDrive/preprocessed_datasets/preprocessed_MovieReviews'
+model_type: 'LABEL_SELECTION'
+seed: 42
+
+hydra:
+  job:
+    chdir: true
+
+basic_model:
+  label_type: 'gt'
+
+crowd_layer_model:
+  mode: 'S'
+
+label_selection_model:
+  mode: 'simple'
+  c: 0.4
