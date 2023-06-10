@@ -364,7 +364,7 @@ class NerMturkPreprocessor:
         logger.info("Start Dawid and Skene Estimation.")
         ds = DawidSkene(n_iter=n_iter).fit_predict(answers_df)
         y_ds = np.zeros_like(y) * (-1)
-        for t, label in ds.iteritems():
+        for t, label in ds.items():
             i = t // maxlen
             j = t % maxlen
             y_ds[i, j, label] = 1
