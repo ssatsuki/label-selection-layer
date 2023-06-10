@@ -1,0 +1,20 @@
+max_epochs: 50
+batch_size: 64
+savedir: '.'
+datadir: '/content/drive/MyDrive/preprocessed_datasets/preprocessed_original_LabelMe'
+model_type: 'LABEL_SELECTION'
+seed: 42
+
+hydra:
+  job:
+    chdir: true
+
+basic_model:
+  label_type: 'gt'
+
+crowd_layer_model:
+  mode: 'MW'
+
+label_selection_model:
+  mode: 'simple'
+  c: 0.4
