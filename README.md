@@ -1,7 +1,7 @@
 # label-selection-layer
 _Label selection layer_ is a new deep-learning-from-crowds method, which inspired by [SelectiveNet](https://arxiv.org/abs/1901.09192).
 
-# Get started
+# Get started (CoNLL 2003 NER case)
 
 At first, you have to install required packages using poetry. Please run the following command and install packages:
 

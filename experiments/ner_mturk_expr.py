@@ -12,7 +12,7 @@ from omegaconf import DictConfig
 
 from label_selection_layer import do_experiment
 from label_selection_layer.data_modules import PreprocessedNERMTurkDataModule
-from label_selection_layer.models.ner_mturk_expt import BasicModel, CrowdLayeredModel, LabelSelectionModel
+from label_selection_layer.models.ner_mturk_expt import BasicModel, CrowdLayerModel, LabelSelectionModel
 
 logger = getLogger(__name__)
 logger.setLevel(INFO)
@@ -117,7 +117,7 @@ class Executor:
         should_pretrain: bool = False,
         seed: Optional[int] = None,
     ) -> bool:
-        model = CrowdLayeredModel(
+        model = CrowdLayerModel(
             num_embeddings=cls.NUM_EMBEDDINGS,
             embeddings=cls.load_embeddings(datadir),
             n_labels=cls.N_LABELS,
