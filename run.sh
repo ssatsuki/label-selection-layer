@@ -1,0 +1,7 @@
+poetry run python experiments/ner_mturk_expr.py --multirun model_type=LABEL_SELECTION label_selection_model.mode="simple" seed="range(42, 52)" label_selection_model.c=0.7 label_selection_model.should_pretrain=true max_epochs=30 early_stopping=true
+poetry run python experiments/ner_mturk_expr.py --multirun model_type=LABEL_SELECTION label_selection_model.mode="class-wise" seed="range(42, 52)" label_selection_model.c=0.5 label_selection_model.should_pretrain=true max_epochs=30 early_stopping=true
+poetry run python experiments/ner_mturk_expr.py --multirun model_type=LABEL_SELECTION label_selection_model.mode="feature-based" seed="range(42, 52)" label_selection_model.c=0.6 label_selection_model.should_pretrain=true max_epochs=30 early_stopping=true
+poetry run python experiments/ner_mturk_expr.py --multirun model_type=CROWD_LAYER crowd_layer_model.mode="MW" seed="range(42, 52)" max_epochs=30 early_stopping=true
+poetry run python experiments/ner_mturk_expr.py --multirun model_type=CROWD_LAYER crowd_layer_model.mode="VW" seed="range(42, 52)" max_epochs=30 early_stopping=true
+poetry run python experiments/ner_mturk_expr.py --multirun model_type=CROWD_LAYER crowd_layer_model.mode="VB" seed="range(42, 52)" max_epochs=30 early_stopping=true
+poetry run python experiments/ner_mturk_expr.py --multirun model_type=CROWD_LAYER crowd_layer_model.mode="VW+B" seed="range(42, 52)" max_epochs=30 early_stopping=true
