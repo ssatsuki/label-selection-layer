@@ -11,7 +11,7 @@ from omegaconf import DictConfig
 
 from label_selection_layer import do_experiment
 from label_selection_layer.data_modules import PreprocessedMovieReviewsDataModule
-from label_selection_layer.models.movie_reviews_expt import BasicModel, CrowdLayeredModel, LabelSelectionModel
+from label_selection_layer.models.movie_reviews_expt import BasicModel, CrowdLayerModel, LabelSelectionModel
 
 logger = getLogger(__name__)
 logger.setLevel(INFO)
@@ -86,7 +86,7 @@ class Executor:
 
         data_module = PreprocessedMovieReviewsDataModule(datadir=datadir, target="annotation", batch_size=batch_size)
         embeddings = cls.load_embeddings(datadir)
-        model = CrowdLayeredModel(
+        model = CrowdLayerModel(
             num_embeddings=num_embeddings, embeddings=embeddings, n_workers=cls.N_WORKERS, crowd_layer_mode=mode
         )
         experiment_name = f"{type(model).__name__}_{mode}_seed_{seed}_annotation"

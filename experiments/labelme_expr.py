@@ -10,7 +10,7 @@ from omegaconf import DictConfig
 
 from label_selection_layer import do_experiment
 from label_selection_layer.data_modules import PreprocessedLabelMeDataModule
-from label_selection_layer.models.label_me_expt import BasicModel, CrowdLayeredModel, LabelSelectiveModel
+from label_selection_layer.models.label_me_expt import BasicModel, CrowdLayerModel, LabelSelectionModel
 
 logger = getLogger(__name__)
 logger.setLevel(INFO)
@@ -64,7 +64,7 @@ class Executor:
             pl.seed_everything(seed)
 
         data_module = PreprocessedLabelMeDataModule(datadir=datadir, label="annotation", batch_size=batch_size)
-        model = CrowdLayeredModel(n_labels=cls.N_LABELS, n_workers=cls.N_WORKERS, crowd_layer_mode=mode)
+        model = CrowdLayerModel(n_labels=cls.N_LABELS, n_workers=cls.N_WORKERS, crowd_layer_mode=mode)
         experiment_name = f"{type(model).__name__}_{mode}_seed_{seed}_annotation"
         return cls._train_and_save(experiment_name, model, data_module, max_epochs, savedir)
 
@@ -83,7 +83,7 @@ class Executor:
             pl.seed_everything(seed)
 
         data_module = PreprocessedLabelMeDataModule(datadir=datadir, label="annotation", batch_size=batch_size)
-        model = LabelSelectiveModel(n_labels=cls.N_LABELS, n_workers=cls.N_WORKERS, selective_mode=mode, c=c)
+        model = LabelSelectionModel(n_labels=cls.N_LABELS, n_workers=cls.N_WORKERS, selective_mode=mode, c=c)
         experiment_name = f"{type(model).__name__}_{mode}_seed_{seed}_annotation_c_{int(c*100):03}"
         return cls._train_and_save(experiment_name, model, data_module, max_epochs, savedir)
 
