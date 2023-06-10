@@ -76,13 +76,14 @@ def main(args):
                 preds_test.append(row)
             preds_test = [list(map(lambda x: INDEX2LABEL[x], y_)) for y_ in preds_test]
             # print(preds_test)
-            res = conlleval(preds_test, y_test, X_test, f"results/r_test_{i:02}.txt")
+            res = conlleval(preds_test, y_test, X_test, f"r_test_{i:02}.txt")
             print(res)
             results.append(res)
         except:
             break
 
     df = pd.DataFrame(results)
+    print(df)
     print(df.mean())
     print(df.std())
 
